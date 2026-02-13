@@ -8,7 +8,7 @@ import { Customer, CustomerCategory } from '../../models';
 export class CustomerService {
   private readonly apiUrl = `${environment.apiBaseUrl}/customers`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getCustomers(page: number = 1, pageSize: number = 20): Observable<Customer[]> {
     const params = new HttpParams()
