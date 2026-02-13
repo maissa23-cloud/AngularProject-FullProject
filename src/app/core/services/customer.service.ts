@@ -15,7 +15,7 @@ export class CustomerService {
       .set('page', page.toString())
       .set('pageSize', pageSize.toString());
     return this.http.get<Customer[]>(this.apiUrl, { params });
-  }
+  }///////
 
   getCustomerById(id: number): Observable<Customer> {
     return this.http.get<Customer>(`${this.apiUrl}/${id}`);
