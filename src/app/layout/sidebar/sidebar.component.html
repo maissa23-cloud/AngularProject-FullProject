@@ -7,13 +7,15 @@
   <nav class="sidebar-nav">
     <ng-container *ngIf="currentUser$ | async as user; else defaultLinks">
       <ng-container *ngIf="user.role === 'Administrator'; else customerLinks">
-        <a *ngFor="let it of adminNav()" [routerLink]="it.route" routerLinkActive="active" class="nav-item" [title]="it.label">
+        <a *ngFor="let it of adminNav()" [routerLink]="it.route" routerLinkActive="active" class="nav-item"
+          [title]="it.label">
           <span class="material-icons nav-icon">{{ it.icon }}</span>
           <span class="nav-label" *ngIf="!isCollapsed">{{ it.label }}</span>
         </a>
       </ng-container>
       <ng-template #customerLinks>
-        <a *ngFor="let it of customerNav()" [routerLink]="it.route" routerLinkActive="active" class="nav-item" [title]="it.label">
+        <a *ngFor="let it of customerNav()" [routerLink]="it.route" routerLinkActive="active" class="nav-item"
+          [title]="it.label">
           <span class="material-icons nav-icon">{{ it.icon }}</span>
           <span class="nav-label" *ngIf="!isCollapsed">{{ it.label }}</span>
         </a>
@@ -21,7 +23,8 @@
     </ng-container>
 
     <ng-template #defaultLinks>
-      <a *ngFor="let it of adminNav()" [routerLink]="it.route" routerLinkActive="active" class="nav-item" [title]="it.label">
+      <a *ngFor="let it of adminNav()" [routerLink]="it.route" routerLinkActive="active" class="nav-item"
+        [title]="it.label">
         <span class="material-icons nav-icon">{{ it.icon }}</span>
         <span class="nav-label" *ngIf="!isCollapsed">{{ it.label }}</span>
       </a>
