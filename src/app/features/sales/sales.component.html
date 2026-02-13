@@ -1,0 +1,17 @@
+<div class="feature-page">
+  <div class="page-header">
+    <h2>Sales & Orders</h2>
+    <p>Manage and track all sales orders from Wide World Importers</p>
+  </div>
+  <div class="content-card">
+    <div class="placeholder" *ngIf="isLoading">
+      <span class="material-icons">hourglass_top</span>
+      <p>Loading sales data...</p>
+    </div>
+    <div class="placeholder" *ngIf="!isLoading && orders.length === 0">
+      <span class="material-icons">point_of_sale</span>
+      <h3>Sales Module</h3>
+      <p>Connect your .NET Web API backend to display sales data here.</p>
+    </div>
+  </div>
+</div>

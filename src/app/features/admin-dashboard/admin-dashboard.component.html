@@ -1,0 +1,5 @@
+<div class="admin-dashboard">
+  <h2>Administrator Dashboard</h2>
+  <p *ngIf="loading">Loading admin stats...</p>
+  <pre *ngIf="!loading">{{ stats | json }}</pre>
+</div>

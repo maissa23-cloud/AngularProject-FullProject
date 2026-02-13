@@ -1,0 +1,113 @@
+<div class="dashboard">
+  <!-- KPI Cards Row -->
+  <div class="kpi-row">
+    <div
+      class="kpi-card"
+      *ngFor="let card of kpiCards"
+    >
+      <div class="kpi-icon" [style.background]="card.color + '1a'">
+        <span class="material-icons" [style.color]="card.color">{{ card.icon }}</span>
+      </div>
+      <div class="kpi-content">
+        <span class="kpi-title">{{ card.title }}</span>
+        <span class="kpi-value" *ngIf="card.format === 'currency'">
+          {{ card.value | currency:'USD':'symbol':'1.0-0' }}
+        </span>
+        <span class="kpi-value" *ngIf="card.format === 'number'">
+          {{ card.value | number:'1.0-0' }}
+        </span>
+        <div class="kpi-growth" [class.positive]="card.growth >= 0" [class.negative]="card.growth < 0">
+          <span class="material-icons growth-icon">
+            {{ card.growth >= 0 ? 'arrow_upward' : 'arrow_downward' }}
+          </span>
+          <span>{{ card.growth }}%</span>
+          <span class="growth-label">vs last month</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row 1: Sales Per Month & Top Products -->
+  <div class="charts-row">
+    <div class="chart-card wide">
+      <div class="chart-header">
+        <h3 class="chart-title">Sales Per Month</h3>
+        <span class="chart-subtitle">Monthly revenue overview</span>
+      </div>
+      <div class="chart-body">
+        <canvas
+          baseChart
+          [type]="salesChartType"
+          [data]="salesChartData"
+          [options]="salesChartOptions"
+        ></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card narrow">
+      <div class="chart-header">
+        <h3 class="chart-title">Sales by Category</h3>
+        <span class="chart-subtitle">Distribution of sales</span>
+      </div>
+      <div class="chart-body">
+        <canvas
+          baseChart
+          [type]="categoryChartType"
+          [data]="categoryChartData"
+          [options]="categoryChartOptions"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row 2: Top Products & Recent Orders -->
+  <div class="charts-row">
+    <div class="chart-card narrow">
+      <div class="chart-header">
+        <h3 class="chart-title">Top Products</h3>
+        <span class="chart-subtitle">Best selling items</span>
+      </div>
+      <div class="chart-body">
+        <canvas
+          baseChart
+          [type]="topProductsChartType"
+          [data]="topProductsChartData"
+          [options]="topProductsChartOptions"
+        ></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card wide">
+      <div class="chart-header">
+        <h3 class="chart-title">Recent Orders</h3>
+        <span class="chart-subtitle">Latest transactions</span>
+      </div>
+      <div class="chart-body table-body">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of recentOrders">
+              <td class="order-id">#{{ order.orderId }}</td>
+              <td>{{ order.customerName }}</td>
+              <td>{{ order.orderDate | date:'mediumDate' }}</td>
+              <td class="order-amount">{{ order.totalAmount | currency:'USD' }}</td>
+              <td>
+                <span class="status-badge" [ngClass]="getStatusClass(order.status)">
+                  {{ order.status }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

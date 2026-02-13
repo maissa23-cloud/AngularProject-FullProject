@@ -1,0 +1,17 @@
+<div class="feature-page">
+  <div class="page-header">
+    <h2>Customers</h2>
+    <p>View and manage customer information</p>
+  </div>
+  <div class="content-card">
+    <div class="placeholder" *ngIf="isLoading">
+      <span class="material-icons">hourglass_top</span>
+      <p>Loading customer data...</p>
+    </div>
+    <div class="placeholder" *ngIf="!isLoading && customers.length === 0">
+      <span class="material-icons">people</span>
+      <h3>Customers Module</h3>
+      <p>Connect your .NET Web API backend to display customer data here.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<aside class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="sidebar-brand">
+    <span class="material-icons brand-icon">storefront</span>
+    <span class="brand-text" *ngIf="!isCollapsed">Wide World</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ng-container *ngIf="currentUser$ | async as user">
+      <ng-container *ngIf="user.role === 'Administrator'; else customerLinks">
+        <a *ngFor="let it of adminNav()" [routerLink]="it.route" routerLinkActive="active" class="nav-item" [title]="it.label">
+          <span class="material-icons nav-icon">{{ it.icon }}</span>
+          <span class="nav-label" *ngIf="!isCollapsed">{{ it.label }}</span>
+        </a>
+      </ng-container>
+      <ng-template #customerLinks>
+        <a *ngFor="let it of customerNav()" [routerLink]="it.route" routerLinkActive="active" class="nav-item" [title]="it.label">
+          <span class="material-icons nav-icon">{{ it.icon }}</span>
+          <span class="nav-label" *ngIf="!isCollapsed">{{ it.label }}</span>
+        </a>
+      </ng-template>
+    </ng-container>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button class="sidebar-toggle" (click)="toggleSidebar()">
+      <span class="material-icons">{{ isCollapsed ? 'chevron_right' : 'chevron_left' }}</span>
+    </button>
+    <button class="icon-logout" *ngIf="(currentUser$ | async)" (click)="logout()" title="Sign out">
+      <span class="material-icons">logout</span>
+    </button>
+  </div>
+</aside>

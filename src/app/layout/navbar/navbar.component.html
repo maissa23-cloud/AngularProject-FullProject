@@ -1,0 +1,36 @@
+<header class="navbar">
+  <div class="navbar-left">
+    <h1 class="page-title">{{ pageTitle }}</h1>
+    <span class="page-date">{{ currentDate | date: 'EEEE, MMMM d, y' }}</span>
+  </div>
+
+  <div class="navbar-right">
+    <!-- Search -->
+    <div class="search-box">
+      <span class="material-icons search-icon">search</span>
+      <input
+        type="text"
+        placeholder="Search..."
+        class="search-input"
+        (input)="onSearch($event)"
+      />
+    </div>
+
+    <!-- Notifications -->
+    <button class="icon-btn" title="Notifications">
+      <span class="material-icons">notifications_none</span>
+      <span class="badge">3</span>
+    </button>
+
+    <!-- User Avatar -->
+    <div class="user-profile">
+      <div class="avatar">
+        <span class="material-icons">person</span>
+      </div>
+      <div class="user-info">
+        <span class="user-name">Admin User</span>
+        <span class="user-role">Administrator</span>
+      </div>
+    </div>
+  </div>
+</header>

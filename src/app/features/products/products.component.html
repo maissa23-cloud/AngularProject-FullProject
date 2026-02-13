@@ -1,0 +1,17 @@
+<div class="feature-page">
+  <div class="page-header">
+    <h2>Products</h2>
+    <p>Browse and manage product inventory</p>
+  </div>
+  <div class="content-card">
+    <div class="placeholder" *ngIf="isLoading">
+      <span class="material-icons">hourglass_top</span>
+      <p>Loading product data...</p>
+    </div>
+    <div class="placeholder" *ngIf="!isLoading && products.length === 0">
+      <span class="material-icons">inventory_2</span>
+      <h3>Products Module</h3>
+      <p>Connect your .NET Web API backend to display product data here.</p>
+    </div>
+  </div>
+</div>

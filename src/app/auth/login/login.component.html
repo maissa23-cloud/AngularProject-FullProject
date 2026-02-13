@@ -1,0 +1,17 @@
+<div class="login-page">
+  <div class="login-card">
+    <h2>Sign in</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>
+        <input formControlName="username" placeholder="Username" />
+      </label>
+      <label>
+        <input formControlName="password" placeholder="Password" type="password" />
+      </label>
+
+      <div *ngIf="error" class="error">{{ error }}</div>
+
+      <button type="submit" class="btn" [disabled]="loading">{{ loading ? 'Signing in...' : 'Sign In' }}</button>
+    </form>
+  </div>
+</div>

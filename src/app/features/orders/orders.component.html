@@ -1,0 +1,17 @@
+<div class="orders-page">
+  <h2>My Orders</h2>
+  <div *ngIf="loading">Loading...</div>
+  <table *ngIf="!loading">
+    <thead>
+      <tr><th>Order #</th><th>Date</th><th>Amount</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of orders">
+        <td>#{{ o.orderId }}</td>
+        <td>{{ o.orderDate | date }}</td>
+        <td>{{ o.totalAmount | currency:'USD' }}</td>
+        <td>{{ o.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
